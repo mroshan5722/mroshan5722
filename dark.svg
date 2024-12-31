@@ -49,16 +49,23 @@ text, tspan {white-space: pre;}
 <text x="370" y="30" fill="#c9d1d9">
 <tspan x="370" y="30">Muhammed Roshan Palayamkot</tspan>
 <tspan x="370" y="50">——————</tspan>
-<!-- <tspan x="370" y="70" class="keyColor">OS</tspan>: <tspan class="valueColor">Windows 10, iOS</tspan> -->
-<tspan x="370" y="90" class="keyColor">Uptime</tspan>: <tspan class="valueColor">21 years, 6 months, 30 days</tspan>
+<tspan x="370" y="90" class="keyColor">About Me</tspan>
+<tspan  x="370" y="110" class="valueColor">I'm a Computer Science graduate passionate about creating </tspan> 
+<tspan  x="370" y="130" class="valueColor">innovative solutions.  With a foundation in software </tspan>  
+<tspan  x="370" y="150" class="valueColor">engineering and machine learning, I thrive on exploring </tspan>  
+<tspan  x="370" y="170" class="valueColor">creative projects—whether it's debugging middleware, </tspan>
+<tspan  x="370" y="190" class="valueColor"> balancing datasets, or building unique websites. I'm </tspan>
+<tspan  x="370" y="210" class="valueColor">  always eager to collaborate, learn, and turn exciting</tspan>
+<tspan  x="370" y="230" class="valueColor">  ideas into reality!</tspan>
+  
+<!-- <tspan x="370" y="90" class="keyColor">Uptime</tspan>: <tspan class="valueColor">21 years, 6 months, 30 days</tspan>
 <tspan x="370" y="110" class="keyColor">Host</tspan>: <tspan class="valueColor">Heriot Watt University, Dubai</tspan><tspan class="commentColor"> #HWUD</tspan>
-<tspan x="370" y="130" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor"> #MACS</tspan>
-<!-- <tspan x="370" y="150" class="keyColor">IDE</tspan>: <tspan class="valueColor">IntelliJ IDEA 2021.2.1, VSCode 1.64.0</tspan> -->
-<tspan x="370" y="190" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Java, Python, JavaScript</tspan>
+<tspan x="370" y="130" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor"> #MACS</tspan> -->
+
+<!-- <tspan x="370" y="190" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Java, Python, JavaScript</tspan>
 <tspan x="370" y="210" class="keyColor">Languages</tspan>.<tspan class="keyColor">Computer</tspan>: <tspan class="valueColor">HTML, CSS, Markdown</tspan>
-<tspan x="370" y="230" class="keyColor">Languages</tspan>.<tspan class="keyColor">Real</tspan>: <tspan class="valueColor">English, Malayalam, Hindi</tspan>
-<!-- <tspan x="370" y="270" class="keyColor">Hobbies</tspan>.<tspan class="keyColor">Software</tspan>: <tspan class="valueColor">Minecraft Modding, iOS Jailbreaking</tspan> -->
-<!-- <tspan x="370" y="290" class="keyColor">Hobbies</tspan>.<tspan class="keyColor">Hardware</tspan>: <tspan class="valueColor">Overclocking, Undervolting</tspan> -->
+<tspan x="370" y="230" class="keyColor">Languages</tspan>.<tspan class="keyColor">Real</tspan>: <tspan class="valueColor">English, Malayalam, Hindi</tspan> -->
+
 <tspan x="370" y="330" class="keyColor">Contact</tspan>:
 <tspan x="370" y="350">——————</tspan>
 <tspan x="370" y="370" class="keyColor">Email</tspan>: <tspan class="valueColor">mroshan5722@gmail.com</tspan>
