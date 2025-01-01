@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" font-family="Andale Mono,AndaleMono,Consolas,monospace" width="1000px" height="670px" font-size="16px">
+<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" font-family="Andale Mono,AndaleMono,Consolas,monospace" width="1000px" height="670px" font-size="16px">
 <style>
 .keyColor {fill: #e77a98;}
 .valueColor {fill: #c7b0d7;}
@@ -52,15 +52,15 @@ text, tspan {white-space: pre;}
 <tspan x="400" y="50">Muhammed Roshan Palayamkot</tspan>
 <tspan x="400" y="70">——————</tspan>
 <tspan x="400" y="90" class="keyColor">About Me :</tspan>
-<tspan x="400" y="110" class="valueColor">I'm a Computer Science graduate passionate about creating </tspan> 
-<tspan x="400" y="130" class="valueColor">innovative solutions.  With a foundation in software </tspan>  
-<tspan x="400" y="150" class="valueColor">engineering and machine learning, I thrive on exploring </tspan>  
-<tspan x="400" y="170" class="valueColor">creative projects—whether it's debugging middleware, </tspan>
-<tspan x="400" y="190" class="valueColor">balancing datasets, or building unique websites. I'm </tspan>
-<tspan x="400" y="210" class="valueColor">always eager to collaborate, learn, and turn exciting</tspan>
-<tspan x="400" y="230" class="valueColor">ideas into reality!</tspan>
+<tspan  x="400" y="110" class="valueColor">I'm a Computer Science graduate passionate about creating </tspan> 
+<tspan  x="400" y="130" class="valueColor">innovative solutions.  With a foundation in software </tspan>  
+<tspan  x="400" y="150" class="valueColor">engineering and machine learning, I thrive on exploring </tspan>  
+<tspan  x="400" y="170" class="valueColor">creative projects—whether it's debugging middleware, </tspan>
+<tspan  x="400" y="190" class="valueColor">balancing datasets, or building unique websites. I'm </tspan>
+<tspan  x="400" y="210" class="valueColor">always eager to collaborate, learn, and turn exciting</tspan>
+<tspan  x="400" y="230" class="valueColor">ideas into reality!</tspan>
   
-<tspan x="400" y="280" class="keyColor">Uptime</tspan>: <tspan class="valueColor">Uptime: 21 years, 6 months, 19 days</tspan>
+<tspan x="400" y="280" class="keyColor">Uptime</tspan>: <tspan class="valueColor">21 years, 6 months, 30 days</tspan>
 <tspan x="400" y="300" class="keyColor">Host</tspan>: <tspan class="valueColor">Heriot Watt University, Dubai</tspan><tspan class="commentColor"> #HWUD</tspan>
 <tspan x="400" y="320" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor"> #MACS</tspan>
 
@@ -75,8 +75,8 @@ text, tspan {white-space: pre;}
 
 <tspan x="400" y="570" class="keyColor">GitHub Stats</tspan>:
 <tspan x="400" y="590">——————</tspan>
-<tspan x="400" y="610" class="subValueColor">Repos</tspan>: <tspan class="subTaskColor">Repos: 12 {Contributed: 133}</tspan> {<tspan class="subValueColor">Contributed</tspan>: <tspan class="subTaskColor">133</tspan>}  | <tspan class="subValueColor">Commmits</tspan>: <tspan class="subTaskColor">Commits: 193</tspan>| <tspan class="subValueColor">Stars</tspan>: <tspan class="subTaskColor">Stars: 2</tspan>
-<tspan x="400" y="630" class="subValueColor">Followers</tspan>: <tspan class="subTaskColor">Followers: 1</tspan>| <tspan class="subValueColor">Lines of Code</tspan>: <tspan class="subTaskColor">Lines of Code: 2776942 (2975083++, 198141--)</tspan> (<tspan class="addColor">522,944++</tspan>, <tspan class="delColor">76,764--</tspan>)
+<tspan x="400" y="610" class="subValueColor">Repos</tspan>: <tspan class="subTaskColor">19</tspan> {<tspan class="subValueColor">Contributed</tspan>: <tspan class="subTaskColor">133</tspan>}  | <tspan class="subValueColor">Commmits</tspan>: <tspan class="subTaskColor">2,110  </tspan>| <tspan class="subValueColor">Stars</tspan>: <tspan class="subTaskColor">0</tspan>
+<tspan x="400" y="630" class="subValueColor">Followers</tspan>: <tspan class="subTaskColor">0 </tspan>| <tspan class="subValueColor">Lines of Code</tspan>: <tspan class="subTaskColor">446,180</tspan> (<tspan class="addColor">522,944++</tspan>, <tspan class="delColor">76,764--</tspan>)
 </text>
 
 </svg>
