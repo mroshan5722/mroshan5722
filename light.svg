@@ -60,7 +60,7 @@ text, tspan {white-space: pre;}
 <tspan x="400" y="210" class="valueColor">always eager to collaborate, learn, and turn exciting</tspan>
 <tspan x="400" y="230" class="valueColor">ideas into reality!</tspan>
   
-<tspan x="400" y="280" class="keyColor">Uptime</tspan>: <tspan class="valueColor">21 years, 6 months, 30 days</tspan>
+<tspan x="400" y="280" class="keyColor">Uptime</tspan>: <tspan class="valueColor">Uptime: 21 years, 6 months, 19 days</tspan>
 <tspan x="400" y="300" class="keyColor">Host</tspan>: <tspan class="valueColor">Heriot Watt University, Dubai</tspan><tspan class="commentColor"> #HWUD</tspan>
 <tspan x="400" y="320" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor">Repos: 12 {Contributed: 133}</tspan>
 
@@ -75,8 +75,8 @@ text, tspan {white-space: pre;}
 
 <tspan x="400" y="570" class="keyColor">GitHub Stats</tspan>:
 <tspan x="400" y="590">——————</tspan>
-<tspan x="400" y="610" class="subValueColor">Repos</tspan>: <tspan class="subTaskColor">19</tspan> {<tspan class="subValueColor">Contributed</tspan>: <tspan class="subTaskColor">133</tspan>}  | <tspan class="subValueColor">Commmits</tspan>: <tspan class="subTaskColor">2,110  </tspan>| <tspan class="subValueColor">Stars</tspan>: <tspan class="subTaskColor">0</tspan>
-<tspan x="400" y="630" class="subValueColor">Followers</tspan>: <tspan class="subTaskColor">0 </tspan>| <tspan class="subValueColor">Lines of Code</tspan>: <tspan class="subTaskColor">446,180</tspan> (<tspan class="addColor">522,944++</tspan>, <tspan class="delColor">76,764--</tspan>)
+<tspan x="400" y="610" class="subValueColor">Repos</tspan>: <tspan class="subTaskColor">Repos: 12 {Contributed: 133}</tspan> {<tspan class="subValueColor">Contributed</tspan>: <tspan class="subTaskColor">133</tspan>}  | <tspan class="subValueColor">Commmits</tspan>: <tspan class="subTaskColor">Commits: 193</tspan>| <tspan class="subValueColor">Stars</tspan>: <tspan class="subTaskColor">Stars: 2</tspan>
+<tspan x="400" y="630" class="subValueColor">Followers</tspan>: <tspan class="subTaskColor">Followers: 1</tspan>| <tspan class="subValueColor">Lines of Code</tspan>: <tspan class="subTaskColor">Lines of Code: 2776942 (2975083++, 198141--)</tspan> (<tspan class="addColor">522,944++</tspan>, <tspan class="delColor">76,764--</tspan>)
 </text>
 
 </svg>
