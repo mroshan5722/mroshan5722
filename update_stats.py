@@ -4,125 +4,178 @@ import requests
 import os
 from xml.dom import minidom
 
-# Access environment variables for authentication
+# GitHub API headers
 HEADERS = {'Authorization': f'token {os.environ["ACCESS_TOKEN"]}'}
 USER_NAME = os.environ['USER_NAME']
 
-def daily_readme(birthday):
+def calculate_age(birthday):
     """
-    Calculate the time since the user's birthday (e.g., 'XX years, XX months, XX days').
+    Calculate time since birthday in years, months, and days.
     """
-    diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
-    return '{} year{}, {} month{}, {} day{}'.format(
-        diff.years, 's' if diff.years != 1 else '',
-        diff.months, 's' if diff.months != 1 else '',
-        diff.days, 's' if diff.days != 1 else ''
-    )
+    today = datetime.date.today()
+    diff = relativedelta.relativedelta(today, birthday)
+    return f"{diff.years} year{'s' if diff.years != 1 else ''}, {diff.months} month{'s' if diff.months != 1 else ''}, {diff.days} day{'s' if diff.days != 1 else ''}"
 
 def fetch_github_data(query, variables):
     """
-    Perform a GraphQL request to the GitHub API.
+    Fetch data from GitHub GraphQL API.
     """
     response = requests.post(
         'https://api.github.com/graphql',
         json={'query': query, 'variables': variables},
         headers=HEADERS
     )
-    if response.status_code != 200:
-        raise Exception(f"GitHub API request failed: {response.status_code} - {response.text}")
+    response.raise_for_status()
     return response.json()
 
-def get_total_commits():
+def get_repositories():
     """
-    Fetch the total number of commits for the user.
+    Fetch all repositories owned by the user.
     """
     query = '''
-    query($login: String!) {
+    query($login: String!, $cursor: String) {
         user(login: $login) {
-            contributionsCollection {
-                contributionCalendar {
-                    totalContributions
+            repositories(first: 100, after: $cursor, ownerAffiliations: OWNER) {
+                edges {
+                    node {
+                        name
+                        nameWithOwner
+                        defaultBranchRef {
+                            target {
+                                ... on Commit {
+                                    history {
+                                        totalCount
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                pageInfo {
+                    endCursor
+                    hasNextPage
                 }
             }
         }
     }
     '''
-    variables = {'login': USER_NAME}
-    data = fetch_github_data(query, variables)
-    return data['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions']
+    variables = {'login': USER_NAME, 'cursor': None}
+    repositories = []
+    while True:
+        data = fetch_github_data(query, variables)
+        edges = data['data']['user']['repositories']['edges']
+        repositories.extend(edges)
+        if not data['data']['user']['repositories']['pageInfo']['hasNextPage']:
+            break
+        variables['cursor'] = data['data']['user']['repositories']['pageInfo']['endCursor']
+    return repositories
 
-def get_total_repos_and_stars():
+def calculate_loc(repository):
     """
-    Fetch the total number of repositories and stars for the user.
+    Calculate the lines of code added and removed for a given repository.
+    """
+    owner, name = repository['node']['nameWithOwner'].split('/')
+    query = '''
+    query($owner: String!, $name: String!) {
+        repository(owner: $owner, name: $name) {
+            defaultBranchRef {
+                target {
+                    ... on Commit {
+                        history(first: 100) {
+                            edges {
+                                node {
+                                    additions
+                                    deletions
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    '''
+    variables = {'owner': owner, 'name': name}
+    additions = 0
+    deletions = 0
+    data = fetch_github_data(query, variables)
+    edges = data['data']['repository']['defaultBranchRef']['target']['history']['edges']
+    for edge in edges:
+        additions += edge['node']['additions']
+        deletions += edge['node']['deletions']
+    return additions, deletions
+
+def get_total_loc(repositories):
+    """
+    Get the total lines of code added and removed across all repositories.
+    """
+    total_additions = 0
+    total_deletions = 0
+    for repo in repositories:
+        additions, deletions = calculate_loc(repo)
+        total_additions += additions
+        total_deletions += deletions
+    return total_additions, total_deletions, total_additions - total_deletions
+
+def get_github_stats():
+    """
+    Get GitHub stats: repositories, commits, stars, followers.
     """
     query = '''
     query($login: String!) {
         user(login: $login) {
-            repositories(ownerAffiliations: OWNER, isFork: false) {
-                totalCount
-            }
-            starredRepositories {
-                totalCount
+            repositories(ownerAffiliations: OWNER, isFork: false) { totalCount }
+            starredRepositories { totalCount }
+            followers { totalCount }
+            contributionsCollection {
+                contributionCalendar { totalContributions }
             }
         }
     }
     '''
     variables = {'login': USER_NAME}
-    data = fetch_github_data(query, variables)
-    repos = data['data']['user']['repositories']['totalCount']
-    stars = data['data']['user']['starredRepositories']['totalCount']
-    return repos, stars
+    data = fetch_github_data(query, variables)['data']['user']
+    repos = data['repositories']['totalCount']
+    stars = data['starredRepositories']['totalCount']
+    followers = data['followers']['totalCount']
+    commits = data['contributionsCollection']['contributionCalendar']['totalContributions']
+    return repos, stars, followers, commits
 
-def get_total_followers():
+def update_svg(filename, age, repos, contributed, commits, stars, followers, loc_added, loc_deleted, loc_total):
     """
-    Fetch the total number of followers for the user.
-    """
-    query = '''
-    query($login: String!) {
-        user(login: $login) {
-            followers {
-                totalCount
-            }
-        }
-    }
-    '''
-    variables = {'login': USER_NAME}
-    data = fetch_github_data(query, variables)
-    return data['data']['user']['followers']['totalCount']
-
-def svg_overwrite(filename, age, repos, contributed, commits, stars, followers, loc_added, loc_deleted, loc_total):
-    """
-    Update placeholders in the SVG file with dynamic data.
+    Update the SVG file with the dynamic stats and age information.
     """
     svg = minidom.parse(filename)
     tspan = svg.getElementsByTagName('tspan')
 
-    # Update placeholders with dynamic data
+    # Update placeholders
     tspan[27].firstChild.data = f"Uptime: {age}"  # Age
-    tspan[49].firstChild.data = f"Repos: {repos}"  # Total Repositories
-    tspan[50].firstChild.data = f"Contributed: {contributed}"  # Contributed Repositories
-    tspan[51].firstChild.data = f"Commits: {commits}"  # Total Commits
+    tspan[49].firstChild.data = f"Repos: {repos} {{Contributed: {contributed}}}"  # Repos
+    tspan[51].firstChild.data = f"Commits: {commits}"  # Commits
     tspan[52].firstChild.data = f"Stars: {stars}"  # Stars
     tspan[54].firstChild.data = f"Followers: {followers}"  # Followers
-    tspan[55].firstChild.data = f"Lines of Code: {loc_total} ({loc_added}++, {loc_deleted}--)"  # Lines of Code
+    tspan[55].firstChild.data = f"Lines of Code: {loc_total} ({loc_added}++, {loc_deleted}--)"  # LOC
 
-    # Save the updated SVG
+    # Save updated file
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(svg.toxml())
 
+if __name__ == "__main__":
+    # Define your birthday (Year, Month, Day)
+    birthday = datetime.date(2003, 6, 13)
 
-if __name__ == '__main__':
-    # Define the user's birthday for age calculation
-    birthday = datetime.datetime(2003, 06, 13)  # Replace with your birthday
+    # Calculate age
+    age = calculate_age(birthday)
 
-    # Fetch dynamic data
-    age = daily_readme(birthday)
-    commits = get_total_commits()
-    repos, stars = get_total_repos_and_stars()
-    followers = get_total_followers()
+    # Fetch repositories and calculate LOC
+    repositories = get_repositories()
+    loc_added, loc_deleted, loc_total = get_total_loc(repositories)
+
+    # Fetch GitHub stats
+    repos, stars, followers, commits = get_github_stats()
 
     # Update SVG files
-    svg_overwrite('dark.svg', age, commits, repos, stars, followers)
-    svg_overwrite('light.svg', age, commits, repos, stars, followers)
+    update_svg('dark.svg', age, repos, 133, commits, stars, followers, loc_added, loc_deleted, loc_total)
+    update_svg('light.svg', age, repos, 133, commits, stars, followers, loc_added, loc_deleted, loc_total)
 
-    print("SVG files updated successfully.")
+    print("SVG files updated successfully!")
