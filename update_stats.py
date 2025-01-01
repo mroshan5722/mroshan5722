@@ -90,7 +90,7 @@ def get_total_followers():
     data = fetch_github_data(query, variables)
     return data['data']['user']['followers']['totalCount']
 
-def update_svg(filename, age, commits, repos, stars, followers):
+def svg_overwrite(filename, age, repos, contributed, commits, stars, followers, loc_added, loc_deleted, loc_total):
     """
     Update placeholders in the SVG file with dynamic data.
     """
@@ -98,19 +98,22 @@ def update_svg(filename, age, commits, repos, stars, followers):
     tspan = svg.getElementsByTagName('tspan')
 
     # Update placeholders with dynamic data
-    tspan[0].firstChild.data = f"Age: {age}"
-    tspan[1].firstChild.data = f"Total Commits: {commits}"
-    tspan[2].firstChild.data = f"Total Repositories: {repos}"
-    tspan[3].firstChild.data = f"Total Stars: {stars}"
-    tspan[4].firstChild.data = f"Total Followers: {followers}"
+    tspan[27].firstChild.data = f"Uptime: {age}"  # Age
+    tspan[49].firstChild.data = f"Repos: {repos}"  # Total Repositories
+    tspan[50].firstChild.data = f"Contributed: {contributed}"  # Contributed Repositories
+    tspan[51].firstChild.data = f"Commits: {commits}"  # Total Commits
+    tspan[52].firstChild.data = f"Stars: {stars}"  # Stars
+    tspan[54].firstChild.data = f"Followers: {followers}"  # Followers
+    tspan[55].firstChild.data = f"Lines of Code: {loc_total} ({loc_added}++, {loc_deleted}--)"  # Lines of Code
 
     # Save the updated SVG
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(svg.toxml())
 
+
 if __name__ == '__main__':
     # Define the user's birthday for age calculation
-    birthday = datetime.datetime(2000, 1, 1)  # Replace with your birthday
+    birthday = datetime.datetime(2003, 06, 13)  # Replace with your birthday
 
     # Fetch dynamic data
     age = daily_readme(birthday)
@@ -119,7 +122,7 @@ if __name__ == '__main__':
     followers = get_total_followers()
 
     # Update SVG files
-    update_svg('dark.svg', age, commits, repos, stars, followers)
-    update_svg('light.svg', age, commits, repos, stars, followers)
+    svg_overwrite('dark.svg', age, commits, repos, stars, followers)
+    svg_overwrite('light.svg', age, commits, repos, stars, followers)
 
     print("SVG files updated successfully.")
