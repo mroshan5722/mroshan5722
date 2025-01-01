@@ -146,20 +146,44 @@ def update_svg(filename, age, repos, contributed, commits, stars, followers, loc
     Update the SVG file with the dynamic stats and age information.
     """
     svg = minidom.parse(filename)
-    tspan = svg.getElementsByTagName('tspan')
+    tspan_elements = svg.getElementsByTagName('tspan')
 
-    # Update placeholders
-    tspan[27].firstChild.data = f"Uptime: {age}"  # Age
-    tspan[49].firstChild.data = f"Repos: {repos} {{Contributed: {contributed}}}"  # Repos
-    tspan[51].firstChild.data = f"Commits: {commits}"  # Commits
-    tspan[52].firstChild.data = f"Stars: {stars}"  # Stars
-    tspan[54].firstChild.data = f"Followers: {followers}"  # Followers
-    tspan[55].firstChild.data = f"Lines of Code: {loc_total} ({loc_added}++, {loc_deleted}--)"  # LOC
+    # Helper function to find a specific tspan by its starting text
+    def find_tspan(start_text):
+        for tspan in tspan_elements:
+            if tspan.firstChild and tspan.firstChild.data.startswith(start_text):
+                return tspan
+        return None
 
-    # Save updated file
+    # Update each dynamic value
+    uptime_tspan = find_tspan("Uptime")
+    if uptime_tspan:
+        uptime_tspan.firstChild.data = f"Uptime: {age}"
+
+    repos_tspan = find_tspan("Repos")
+    if repos_tspan:
+        repos_tspan.firstChild.data = f"Repos: {repos} {{Contributed: {contributed}}}"
+
+    commits_tspan = find_tspan("Commits")
+    if commits_tspan:
+        commits_tspan.firstChild.data = f"Commits: {commits}"
+
+    stars_tspan = find_tspan("Stars")
+    if stars_tspan:
+        stars_tspan.firstChild.data = f"Stars: {stars}"
+
+    followers_tspan = find_tspan("Followers")
+    if followers_tspan:
+        followers_tspan.firstChild.data = f"Followers: {followers}"
+
+    loc_tspan = find_tspan("Lines of Code")
+    if loc_tspan:
+        loc_tspan.firstChild.data = f"Lines of Code: {loc_total} ({loc_added}++, {loc_deleted}--)"
+
+    # Save the updated SVG
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(svg.toxml())
-
+        
 if __name__ == "__main__":
     # Define your birthday (Year, Month, Day)
     birthday = datetime.date(2003, 6, 13)
