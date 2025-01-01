@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><svg xmlns="http://www.w3.org/2000/svg" font-family="Andale Mono,AndaleMono,Consolas,monospace" width="1000px" height="670px" font-size="16px">
+<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" font-family="Andale Mono,AndaleMono,Consolas,monospace" width="1000px" height="670px" font-size="16px">
 <style>
 .keyColor {fill: #cc4469;}
 .valueColor {fill: #752ca7;}
@@ -40,7 +40,7 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="510">           -=+**#%%@%%####%#%#%@@       </tspan>
 <tspan x="15" y="530">           =+++***#@@@@@@@@@@@@#.       </tspan>
 <tspan x="15" y="550">            *+++****#%@@@@@@@@%-..      </tspan>
-<tspan x="15" y="570">            =.:+*****#%@@@@%%#%=...     </tspan>
+<tspan x="15" y="570">Uptime: 21 years, 6 months, 19 days</tspan>
 <tspan x="15" y="590">     .      .  .**###%%%%%%%%#%::...  . </tspan>
 <tspan x="15" y="610">    ..     ..-   #%###%%%%%%#*#...... ..</tspan>
 <tspan x="15" y="630">  ...  ... ..:    -%%#####%#***     .  .</tspan>
@@ -52,20 +52,20 @@ text, tspan {white-space: pre;}
 <tspan x="400" y="50">Muhammed Roshan Palayamkot</tspan>
 <tspan x="400" y="70">——————</tspan>
 <tspan x="400" y="90" class="keyColor">About Me :</tspan>
-<tspan  x="400" y="110" class="valueColor">I'm a Computer Science graduate passionate about creating </tspan> 
-<tspan  x="400" y="130" class="valueColor">innovative solutions.  With a foundation in software </tspan>  
-<tspan  x="400" y="150" class="valueColor">engineering and machine learning, I thrive on exploring </tspan>  
-<tspan  x="400" y="170" class="valueColor">creative projects—whether it's debugging middleware, </tspan>
-<tspan  x="400" y="190" class="valueColor">balancing datasets, or building unique websites. I'm </tspan>
-<tspan  x="400" y="210" class="valueColor">always eager to collaborate, learn, and turn exciting</tspan>
-<tspan  x="400" y="230" class="valueColor">ideas into reality!</tspan>
+<tspan x="400" y="110" class="valueColor">I'm a Computer Science graduate passionate about creating </tspan> 
+<tspan x="400" y="130" class="valueColor">innovative solutions.  With a foundation in software </tspan>  
+<tspan x="400" y="150" class="valueColor">engineering and machine learning, I thrive on exploring </tspan>  
+<tspan x="400" y="170" class="valueColor">creative projects—whether it's debugging middleware, </tspan>
+<tspan x="400" y="190" class="valueColor">balancing datasets, or building unique websites. I'm </tspan>
+<tspan x="400" y="210" class="valueColor">always eager to collaborate, learn, and turn exciting</tspan>
+<tspan x="400" y="230" class="valueColor">ideas into reality!</tspan>
   
 <tspan x="400" y="280" class="keyColor">Uptime</tspan>: <tspan class="valueColor">21 years, 6 months, 30 days</tspan>
 <tspan x="400" y="300" class="keyColor">Host</tspan>: <tspan class="valueColor">Heriot Watt University, Dubai</tspan><tspan class="commentColor"> #HWUD</tspan>
-<tspan x="400" y="320" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor"> #MACS</tspan>
+<tspan x="400" y="320" class="keyColor">Kernel</tspan>: <tspan class="valueColor">Mathematics And Computer Science</tspan><tspan class="commentColor">Repos: 12 {Contributed: 133}</tspan>
 
-<tspan x="400" y="370" class="keyColor">Languages</tspan>.<tspan class="keyColor">Programming</tspan>: <tspan class="valueColor">Java, Python, JavaScript</tspan>
-<tspan x="400" y="390" class="keyColor">Languages</tspan>.<tspan class="keyColor">Computer</tspan>: <tspan class="valueColor">HTML, CSS, Markdown</tspan>
+<tspan x="400" y="370" class="keyColor">Languages</tspan>.<tspan class="keyColor">Commits: 188</tspan>: <tspan class="valueColor">Stars: 2</tspan>
+<tspan x="400" y="390" class="keyColor">Languages</tspan>.<tspan class="keyColor">Followers: 1</tspan>: <tspan class="valueColor">Lines of Code: 2776942 (2974644++, 197702--)</tspan>
 <tspan x="400" y="410" class="keyColor">Languages</tspan>.<tspan class="keyColor">Real</tspan>: <tspan class="valueColor">English, Malayalam, Hindi</tspan>
 
 <tspan x="400" y="460" class="keyColor">Contact</tspan>:
