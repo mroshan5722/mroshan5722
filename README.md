@@ -1,3 +1,5 @@
+<img src="banner.jpg" alt="GitHub Banner" width="100%" />
+
 <a href="https://github.com/mroshan5722">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mroshan5722/mroshan5722/main/dark.svg">
