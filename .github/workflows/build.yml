@@ -1,40 +1,42 @@
-name: README build
+name: Update GitHub Stats
+
 on:
-  push:
-    branches:
-      - main
+  # Schedule the workflow to run daily at midnight UTC
   schedule:
-    - cron: "0 4 * * *"
+    - cron: "0 0 * * *"
+  # Allow manual triggering of the workflow
+  workflow_dispatch:
+
 jobs:
-  build:
+  update-stats:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          fetch-depth: 1
-      - name: Get Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
-      - name: Configure pip cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/cache/requirements.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-      - name: Install dependencies
-        run: python -m pip install -r cache/requirements.txt
-      - name: Update README file
+          python-version: 3.9
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: pip install python-dateutil requests
+
+      # Step 4: Run the script
+      - name: Run Update Script
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_NAME: ${{ secrets.USER_NAME }}
-        run: python today.py
-      - name: Commit
-        run: |-
+        run: python build.py
+
+      # Step 5: Commit and Push Changes
+      - name: Commit Changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git add .
-          git diff
-          git config --global user.email "github-actions-bot@mroshan5722.github.io"
-          git config --global user.name "mroshan5722/GitHub-Actions-Bot"
-          git commit -m "Updated README" -a || echo "No changes to commit"
+          git commit -m "Update GitHub stats" || echo "No changes to commit"
           git push
